@@ -1,10 +1,14 @@
 #include <iostream>
+#include "game.h"
 
 using namespace std;
 
-int main()
-{
-  cout << "Hello World!" << endl;
+int main() {
+  game g;
+  bool cont = true;
+  while (cont) {
+    cont = g.getInput();
+  }
+
   return 0;
 }
-
