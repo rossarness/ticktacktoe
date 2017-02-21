@@ -1,14 +1,16 @@
-#include <iostream>
+#include <stdio.h>
 #include "game.h"
 
-using namespace std;
 
 int main() {
-  game g;
-  bool cont = true;
-  while (cont) {
-    cont = g.getInput();
-  }
 
-  return 0;
+    std::printf("Weclome to TickTacToe game!");
+    game g;
+    g.choosePlayer();
+    bool cont = true;
+    while (cont) {
+        cont = g.getInput();
+    }
+
+    return 0;
 }

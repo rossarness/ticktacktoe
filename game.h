@@ -1,13 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
-#include <iostream>
+#include <stdio.h>
 #include <cstdio>
 #include <string.h>
 
-using namespace std;
+
 
 class game {
  public:
+  void choosePlayer();
   bool getInput();
   void store(char inData, int inX, int inY);
   void printBoard();
@@ -17,14 +18,30 @@ class game {
   //  int x;
   //  int y;
   char fields[3][3]{{0}};
+  int player{0};
 };
 
+void game::choosePlayer() {
+    while (player != 1 || player != 2) {
+        std::printf("Which player would you like to use:\n1) X\n2) Y\n: Choice: ");
+        std::scanf("%d", &player);
+        if (player < 0 || player > 2) {
+            std::printf("Your choice [%d] is invalid. Try again.", player);
+        }
+    }
+}
+
 bool game::getInput() {
-  cout << "Please provide coordinates of field you want to use" << endl;
+  std::printf("Please provide coordinates of field you want to use");
 
   char u{0};
+  if (player == 1){
+      u = 'X';
+  } else {
+      u = 'Y';
+  }
   int x{0}, y{0};
-  scanf("%c %d %d", &u, &x, &y);
+  std::scanf ("%d %d", &x, &y);
   //  cin >> x >> y;
   //  cout << "Please provide input" << endl;
   //  cin >> inputData;
@@ -44,7 +61,7 @@ void game::store(char inData, int inX, int inY) {
 void game::printBoard() {
   for (int x = 0; x < 3; x++) {
     for (int y = 0; y < 3; y++)
-      printf("Row: %d Column: %d Value stored is: %c \n", x, y, fields[x][y]);
+      std::printf("Row: %d Column: %d Value stored is: %c \n", x, y, fields[x][y]);
   }
 }
 
